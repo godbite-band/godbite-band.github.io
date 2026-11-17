@@ -8,7 +8,7 @@ const harness=buildSync({stdin:{contents:`
   window.w=new World({canvas:document.querySelector('canvas'),onFailure:()=>{throw Error('WebGL context lost')},onRelease:()=>{}});
   w.setProgress(1.42);
   document.querySelector('button').onclick=()=>w.setForestSecretMode('fps');
-`,resolveDir:process.cwd()},bundle:true,write:false,format:'iife',define:{'import.meta.env.DEV':'true','import.meta.env.BASE_URL':'"/experience/"'}}).outputFiles[0].text;
+`,resolveDir:process.cwd()},bundle:true,write:false,format:'iife',define:{'import.meta.env.DEV':'true','import.meta.env.BASE_URL':'"/"'}}).outputFiles[0].text;
 
 for(const software of [false,true]){
   test(`actual mouse turns render finite frames, and broken effects cannot hide the world (${software?'software':'native GPU'})`,async({baseURL})=>{

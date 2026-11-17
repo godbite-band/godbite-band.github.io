@@ -35,7 +35,7 @@ test('two masks per room fit both layouts and the MIDI music has finite, playabl
 });
 
 // Compile the real world into an isolated test page: no production debug hooks.
-const harness=buildSync({stdin:{contents:"import {World} from './src/world';import * as THREE from 'three';window.huntThree=THREE;window.createHuntWorld=()=>{const w=new World({canvas:document.querySelector('canvas'),onFailure:()=>{throw Error('WebGL failed')},onRelease:()=>{},onHuntHit:()=>window.hitSounds=(window.hitSounds||0)+1});window.huntWorld=w;w.setProgress(1.42);w.setForestSecretMode('fps');};",resolveDir:process.cwd()},bundle:true,write:false,format:'iife',define:{'import.meta.env.DEV':'true','import.meta.env.BASE_URL':'"/experience/"'}}).outputFiles[0].text;
+const harness=buildSync({stdin:{contents:"import {World} from './src/world';import * as THREE from 'three';window.huntThree=THREE;window.createHuntWorld=()=>{const w=new World({canvas:document.querySelector('canvas'),onFailure:()=>{throw Error('WebGL failed')},onRelease:()=>{},onHuntHit:()=>window.hitSounds=(window.hitSounds||0)+1});window.huntWorld=w;w.setProgress(1.42);w.setForestSecretMode('fps');};",resolveDir:process.cwd()},bundle:true,write:false,format:'iife',define:{'import.meta.env.DEV':'true','import.meta.env.BASE_URL':'"/"'}}).outputFiles[0].text;
 
 for(const mobile of [false,true]){
   test(`real stones collect all ten masks; pause, exit and replay work (${mobile?'mobile':'desktop'})`,async({page})=>{
